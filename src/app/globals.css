@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================
+   SGSS SecureTrack — Global Design System
+   ========================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-gold: #fecf31;
+  --color-gold-hover: #e8bb1e;
+  --color-dark-blue: #1d2c48;
+  --color-dark-blue-light: #263659;
+  --color-gray: #929292;
+  --color-gray-light: #c4c4c4;
+  --color-dark: #2a2829;
+  --color-white: #ffffff;
+  --color-bg: #ffffff;
+  --color-bg-section: #f8f9fc;
+
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+
+  --shadow-sm: 0 1px 3px rgba(29, 44, 72, 0.08);
+  --shadow-md: 0 4px 16px rgba(29, 44, 72, 0.1);
+  --shadow-lg: 0 10px 40px rgba(29, 44, 72, 0.12);
+  --shadow-xl: 0 24px 60px rgba(29, 44, 72, 0.15);
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  cursor: crosshair;
+}
+
+/* Utility Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-dark-blue);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}

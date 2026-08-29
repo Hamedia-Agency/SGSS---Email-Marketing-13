@@ -1,0 +1,128 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(29, 44, 72, 0.08);
+  box-shadow: 0 2px 20px rgba(29, 44, 72, 0.06);
+}
+
+.navInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 110px;
+}
+
+.navLogo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logoImg {
+  border-radius: 8px;
+  object-fit: contain;
+  height: 80px;
+  width: auto;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+}
+
+.navLink {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-dark);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition), background var(--transition);
+}
+
+.navLink:hover {
+  color: var(--color-dark-blue);
+  background: rgba(29, 44, 72, 0.05);
+}
+
+.navCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-dark-blue);
+  background: var(--color-gold);
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.navCta:hover {
+  background: var(--color-gold-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(254, 207, 49, 0.4);
+}
+
+.mobileMenuToggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--color-dark-blue);
+  cursor: pointer;
+  padding: 8px;
+}
+
+.mobileDropdown {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-white);
+  padding: 16px 24px 24px;
+  border-bottom: 1px solid var(--color-gray-light);
+  box-shadow: var(--shadow-lg);
+  gap: 12px;
+}
+
+.mobileNavLink {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-dark-blue);
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f4f8;
+}
+
+.mobileCta {
+  margin-top: 8px;
+  text-align: center;
+  background: var(--color-gold);
+  color: var(--color-dark-blue);
+  font-weight: 800;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+@media (max-width: 900px) {
+  .navLinks {
+    display: none;
+  }
+
+  .mobileMenuToggle {
+    display: block;
+  }
+}
