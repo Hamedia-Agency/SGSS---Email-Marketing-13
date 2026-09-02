@@ -31,7 +31,6 @@ export const metadata: Metadata = {
   },
 };
 
-import { BulletEffect } from "@/components/BulletEffect";
 
 export default function RootLayout({
   children,
@@ -39,7 +38,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body>
-        <BulletEffect />
         {children}
         <BackToTop />
       </body>
