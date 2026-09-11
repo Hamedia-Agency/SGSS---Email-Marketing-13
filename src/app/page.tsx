@@ -1,99 +1,26 @@
-"use client";
-
-import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import { PreFooterCTA } from "@/components/PreFooterCTA";
-import { LeadGenForm } from "@/components/LeadGenForm";
-import { LeadGenModal } from "@/components/LeadGenModal";
-import { ProcessExplorer } from "@/components/ProcessExplorer";
-import { CarouselSection } from "@/components/CarouselSection";
+import EvaluationCarousel from "@/components/EvaluationCarousel";
+import ParticleMesh from "@/components/ParticleMesh";
+import FloatingShapes from "@/components/FloatingShapes";
+import FAQAccordion from "@/components/FAQAccordion";
 import { CoverageSection } from "@/components/CoverageSection";
-import { FAQAccordion } from "@/components/FAQAccordion";
-import IndustriesSection from "@/components/IndustriesSection";
-import { 
-  ShieldCheck, 
-  MapPin, 
-  FileText, 
-  Camera, 
-  FileSpreadsheet, 
-  CheckCircle, 
-  Eye, 
-  AlertCircle, 
-  UserCheck, 
-  Headphones, 
-  TrendingUp, 
-  ArrowRight,
-  Shield,
-  FileCheck,
-  BellRing,
-  Clock,
-  BookOpen,
-  Lock,
-  Key,
-  Users,
-  Activity
-} from "lucide-react";
 
 export default function HomePage() {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalTitle, setModalTitle] = useState("Schedule Your Free Security Consultation");
-
-  const handleOpenConsultation = (title?: string) => {
-    if (title) setModalTitle(title);
-    else setModalTitle("Schedule Your Free Security Consultation");
-    setModalOpen(true);
-  };
-
-  const faqs = [
-    {
-      question: "How does Secure Guard determine the right security combination for my industry and property?",
-      answer: "We evaluate your property layout, operating schedules, traffic flow, and historical security risks. Rather than applying a standard template, we select a tailored mix of guards, mobile patrols, and monitoring technology designed specifically around how your facility operates."
-    },
-    {
-      question: "Does every property require a full-time, on-site security officer?",
-      answer: "No. Some properties require a continuous visible presence, while others are effectively protected through mobile patrols, solar surveillance towers, live remote video monitoring, or a hybrid strategy. We align our services with your actual operational risks rather than forcing full-time guard posts."
-    },
-    {
-      question: "Can multiple security services be combined, and do you work with existing camera systems?",
-      answer: "Yes. We frequently integrate standing officers, mobile patrols, and live monitoring to create multi-layered coverage. We can also evaluate your existing camera infrastructure and incorporate those feeds into our SecureTrack operational network to avoid unnecessary hardware replacement costs."
-    },
-    {
-      question: "How do standing guards and remote video monitoring work together on site?",
-      answer: "Remote video monitoring provides continuous visual oversight across large perimeters and outdoor blind spots, while standing guards and mobile patrol officers manage access gates, conduct physical door inspections, and deliver rapid face-to-face response when an alert is flagged."
-    },
-    {
-      question: "Can our security service plan scale as our operational needs change?",
-      answer: "Yes. Our plans are fully flexible. You can increase guard hours during peak operational periods, scale back during slower seasons, adapt coverage as construction projects transition into occupied buildings, or deploy short-term temporary protection for short projects."
-    },
-    {
-      question: "Does Secure Guard support large properties, multi-building campuses, and expansive outdoor yards?",
-      answer: "Yes. We protect large industrial facilities, commercial plazas, residential communities, and hard-to-wire equipment yards by combining mobile field patrols, solar-powered surveillance towers, and centralized dispatch coordination."
-    },
-    {
-      question: "What geographic regions does Secure Guard serve?",
-      answer: "Secure Guard provides professional, industry-tailored security services to commercial, industrial, and residential properties throughout Southern and Northern California."
-    },
-    {
-      question: "Is an industry-specific security assessment available before committing?",
-      answer: "Yes. Secure Guard offers initial site evaluations to review your current setup, pinpoint industry-specific vulnerabilities, and outline how your security coverage can be optimized with zero obligation."
-    }
-  ];
-
   return (
     <main className={styles.main}>
-      {/* ===== NAVBAR ===== */}
-      <Navbar onOpenConsultation={() => handleOpenConsultation()} />
+      <Navbar />
 
-      {/* ===== HERO SECTION ===== */}
-      <section className={styles.hero}>
+      {/* ===== SECTION 1: HERO ===== */}
+      <section className={styles.hero} id="hero">
         <div className={styles.heroBg}>
           <Image
-            src="https://cms.secureguardservices.com/wp-content/uploads/2026/08/diffguards.webp"
-            alt="Industry-Tailored Security Solutions"
+            src="https://cms.secureguardservices.com/wp-content/uploads/2026/08/em10-1.webp"
+            alt="Site Vulnerability Audit"
             fill
             className={styles.heroBgImg}
             priority
@@ -103,22 +30,25 @@ export default function HomePage() {
         </div>
         <div className={`container ${styles.heroWrapper}`}>
           <div className={styles.heroContent}>
-            <div className={styles.heroBadge}>
-              Customized Coverage
+            <div className={styles.heroBadge} id="hero-badge">
+              <span className={styles.heroBadgeDot} />
+              Proactive Threat Identification
             </div>
-            <h1 className={styles.heroTitle}>
-              <span className={styles.heroTitleAccent}>Industry-Tailored</span> <br /> Security Solutions
+            <h1 className={styles.heroTitle} id="hero-title">
+              Site Vulnerability <span className={styles.heroTitleAccent}>Audit</span>
             </h1>
             <p className={styles.heroSubtitle}>
-              Secure Guard replaces generic security with custom coverage built around your site’s exact layout, operating hours, and risks. From construction sites to retail centers, we combine live monitoring, mobile patrols, and standing guards into a response network tailored to how your property actually operates.
+              Secure Guard identifies hidden security risks, from unsecured secondary entrances and dark parking zones to unmonitored loading docks and predictable patrol routes, before an incident occurs. Secure Guard conducts comprehensive site vulnerability audits that evaluate how your property functions as an interconnected system rather than inspecting isolated equipment.
             </p>
-            <a 
-              href="#"
-              onClick={(e) => { e.preventDefault(); handleOpenConsultation(); }}
-              className={styles.btnPrimary}
-            >
-              See How We Protect Your Industry
-            </a>
+            <div className={styles.heroCtas}>
+              <a 
+                href="#prefooter-cta" 
+                className={styles.btnPrimary} 
+                id="hero-cta-primary"
+              >
+                Request a Site Audit
+              </a>
+            </div>
           </div>
         </div>
         <div className={styles.heroScroll} aria-hidden="true">
@@ -126,265 +56,248 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== SECTION 1: WHY CHOOSE SECURE GUARD? ===== */}
-      <section className={styles.section} id="why-choose-us">
+      {/* ===== SECTION 2: What Secure Guard Evaluates (Carousel) ===== */}
+      <section className={styles.featuresSection} id="evaluates">
         <div className="container">
-          <div className={styles.splitGrid}>
-            <div className={styles.splitContent}>
-              <span className={styles.sectionTag}>Why Choose Us</span>
-              <h2 className={styles.sectionTitle}>
-                Why Choose Secure Guard?
-              </h2>
-              <p className={styles.bodyText}>
-                Secure Guard builds industry-specific security around your actual property layout rather than forcing a standard template. Every location receives clear, site-specific procedures that guide guards on patrol routes, access controls, emergency contacts, and escalation steps. Through SecureTrack, on-site guards, field supervisors, 24/7 dispatchers, and camera systems operate as one connected network across Southern and Northern California.
-              </p>
-              <p className={styles.bodyText}>
-                Because business needs change over time, our coverage remains fully flexible. We evaluate and adjust your security setup as site conditions, operating hours, and property risks evolve, ensuring seamless protection for single locations or multi-property portfolios.
-              </p>
-            </div>
-            <div className={styles.splitImageWrapper}>
-              <Image 
-                src="https://cms.secureguardservices.com/wp-content/uploads/2026/04/The-Role-of-Unarmed-Security-Guards-in-Oakland-Neighborhoods-scaled.jpg" 
-                alt="Industry-Specific Security" 
-                fill
-                className={styles.splitImage}
-              />
-            </div>
+          <div className={styles.sectionHeader} style={{ maxWidth: "100%" }}>
+            <span className={styles.sectionTag} style={{ color: "#b89000", background: "rgba(254, 207, 49, 0.13)", borderColor: "rgba(254, 207, 49, 0.35)" }}>Comprehensive Review</span>
+            <h2 className={styles.sectionTitle} style={{ color: "var(--color-white)" }}>
+              What Secure Guard Evaluates
+            </h2>
+            <p className={styles.bodyTextCenteredLight} style={{ color: "rgba(255, 255, 255, 0.85)", maxWidth: "100%", textAlign: "center" }}>
+              We analyze every potential vulnerability across your facility, ensuring physical safeguards and technological tools work together to build an impenetrable defense.
+            </p>
           </div>
 
-          {/* ===== SECTION 2: WHAT MAKES EVERY PROPERTY DIFFERENT? ===== */}
-          <div style={{ marginTop: "80px", marginBottom: "80px" }}>
-            <div className={styles.setupUnifiedContainer}>
-              {/* Left Pane */}
-              <div className={styles.setupLeftPane}>
-                <span className={styles.setupLeftTag}>Tailored Security Plans</span>
-                <h2 className={styles.setupLeftTitle}>
-                  What Makes Every Property Different?
+          <EvaluationCarousel />
+        </div>
+      </section>
+
+      {/* ===== SECTION 3: Evaluating Property Movement ===== */}
+      <section className={styles.section} id="movement">
+        <div className="container">
+          <div className={styles.addonGrid}>
+            <div className={styles.addonImageCol}>
+              <Image 
+                src="https://cms.secureguardservices.com/wp-content/uploads/2026/08/em10-2.webp" 
+                alt="Evaluating Property Movement" 
+                width={500} 
+                height={400} 
+                className={styles.addonImage} 
+                style={{ borderRadius: "12px", objectFit: "cover" }}
+              />
+            </div>
+            <div className={styles.addonContent}>
+              <div className={styles.sectionHeader} style={{ margin: "0", textAlign: "left" }}>
+                <span className={styles.sectionTag}>Traffic & Operations</span>
+                <h2 className={styles.sectionTitle} style={{ marginBottom: "16px" }}>
+                  Evaluating Property Movement
                 </h2>
-                <p className={styles.setupLeftDesc}>
-                  Every facility has unique vulnerabilities. We don't apply a one-size-fits-all approach; instead, we build a tailored security plan that adapts to your property's specific layout, entry points, and operational rhythms.
+              </div>
+              <p className={styles.bodyText}>
+                Secure Guard analyzes how employees, visitors, contractors, and delivery vehicles navigate your site to uncover where unauthorized activity could blend into daily operations. Shared entryways, busy service bays, and unmanaged visitor pathways often make foot and vehicle traffic difficult to regulate, creating subtle vulnerabilities during peak operational hours.
+              </p>
+              <p className={styles.bodyText}>
+                By mapping these movement patterns against your site's physical layout, we pinpoint exactly where your property requires stronger access controls, refined visitor check-in workflows, targeted patrol coverage, or live video monitoring to maintain complete operational oversight.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SECTION 4: Connecting Your Security System (Escalation Box) ===== */}
+      <section className={styles.contactSection} id="connecting">
+        <div className={`container ${styles.contactContainer}`}>
+          <div className={styles.contactContentPanel}>
+            <div className={styles.sectionHeader} style={{ margin: "0 0 24px 0", textAlign: "left" }}>
+              <span className={styles.sectionTag} style={{ color: "#b89000", background: "rgba(254, 207, 49, 0.13)", borderColor: "rgba(254, 207, 49, 0.35)" }}>Information Flow</span>
+              <h2 className={styles.sectionTitle} style={{ marginBottom: "16px", color: "var(--color-white)" }}>
+                Connecting Your Security System
+              </h2>
+            </div>
+            <p className={styles.bodyText} style={{ color: "rgba(255, 255, 255, 0.9)" }}>
+              Secure Guard evaluates how information flows between your personnel and technology, analyzing how incidents are escalated, how patrol activity is logged, and how existing protocols respond under pressure.
+            </p>
+            <p className={styles.bodyText} style={{ color: "rgba(255, 255, 255, 0.9)", marginBottom: 0 }}>
+              By unifying standalone security elements into a synchronized operational network, we eliminate communication gaps and ensure your guards, technology, and procedures work together seamlessly when an incident occurs.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SECTION 5: How Services Work Together ===== */}
+      <section className={styles.standardSection} id="services">
+        <div className={styles.standardPatternLeft}>
+          <FloatingShapes shapeCount={18} />
+        </div>
+        <div className={styles.standardPatternRight}>
+          <FloatingShapes shapeCount={18} />
+        </div>
+        <div className="container">
+          <div className={styles.standardHeader} style={{ marginBottom: 0, maxWidth: "100%" }}>
+            <span className={styles.sectionTag}>Unified Defense</span>
+            <h2 className={styles.sectionTitle}>How Services Work Together</h2>
+            <p className={styles.standardSubtitle} style={{ maxWidth: "100%", textAlign: "center" }}>
+              Secure Guard combines physical personnel, electronic surveillance, and centralized management into a unified defense network. Officers manage fixed access points, while mobile patrols perform randomized checks across outer perimeters and parking areas. Concurrently, live video monitoring and surveillance towers maintain constant visual coverage over expansive or low-light zones. Central dispatch links these layers by analyzing surveillance data and routing field personnel to specific areas, ensuring every service directly fills the operational gaps of the others.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SECTION 6: SecureTrack (Split Pane) ===== */}
+      <section className={styles.section} id="securetrack" style={{ background: "var(--color-bg-alt, #f7f9fc)" }}>
+        <div className="container">
+          <div className={styles.addonGrid} style={{ gridTemplateColumns: "1fr 1fr", direction: "rtl" }}>
+            <div className={styles.addonImageCol} style={{ direction: "ltr" }}>
+              <Image 
+                src="https://cms.secureguardservices.com/wp-content/uploads/2026/08/em8-1-1.webp" 
+                alt="SecureTrack Platform" 
+                width={500} 
+                height={400} 
+                className={styles.addonImage} 
+                style={{ borderRadius: "12px", objectFit: "cover" }}
+              />
+            </div>
+            <div className={styles.addonContent} style={{ direction: "ltr" }}>
+              <div className={styles.sectionHeader} style={{ margin: "0", textAlign: "left" }}>
+                <span className={styles.sectionTag}>Digital Accountability</span>
+                <h2 className={styles.sectionTitle} style={{ marginBottom: "16px" }}>
+                  SecureTrack
+                </h2>
+              </div>
+              <p className={styles.bodyText}>
+                SecureTrack is the central management platform that connects field personnel, dispatch, supervision, and reporting to enforce audit-driven security protocols.
+              </p>
+              <p className={styles.bodyText}>
+                Using GPS tracking and digital checkpoint verification, the platform ensures guards actively inspect the high-risk zones, unlit areas, and secondary access points identified during your assessment. Real-time logging and digital incident reporting allow dispatchers to track officer movement continuously, verify route compliance, and deliver clear proof of coverage directly to property managers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SECTION 7: Security Assessment Process (Grid) ===== */}
+      <section className={styles.section} id="process" style={{ background: "var(--color-bg, #ffffff)" }}>
+        <div className="container">
+          <div className={styles.setupUnifiedContainer} style={{ gridTemplateColumns: "1fr" }}>
+            <div className={styles.sectionHeader} style={{ margin: "0 auto 48px", textAlign: "center", maxWidth: "800px" }}>
+              <span className={styles.sectionTag}>Structured Evaluation</span>
+              <h2 className={styles.sectionTitle} style={{ marginBottom: "16px" }}>
+                Security Assessment Process
+              </h2>
+            </div>
+            
+            <div className={styles.setupRightGrid} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "24px" }}>
+              <div className={styles.setupGridItem} style={{ background: "var(--color-bg-section)" }}>
+                <div className={styles.setupItemHeader}>
+                  <span className={styles.setupItemIcon}>01</span>
+                  <h3 className={styles.setupItemTitle}>Map Property Operations</h3>
+                </div>
+                <p className={styles.setupItemDesc}>
+                  Reviewing your site type, operating schedules, traffic flows, occupancy levels, and historical security incidents to establish a complete operational baseline before evaluating specific risks.
                 </p>
               </div>
-              
-              {/* Right Pane (Grid) */}
-              <div className={styles.setupRightGrid}>
-                <div className={`${styles.setupGridItem} ${styles.setupItem1}`}>
-                  <div className={styles.setupItemHeader}>
-                    <span className={styles.setupItemIcon}>
-                      <Lock size={20} />
-                    </span>
-                    <h3 className={styles.setupItemTitle}>Access Points</h3>
-                  </div>
-                  <p className={styles.setupItemDesc}>
-                    Every property features distinct entry and exit dynamics for employees, tenants, vendors, and vehicles. Secure Guard evaluates each entry channel to implement precise oversight including credential verification, visitor screening, vehicle logging, and gate management ensuring restricted areas stay protected without slowing down legitimate site access.
-                  </p>
-                </div>
 
-                <div className={`${styles.setupGridItem} ${styles.setupItem2}`}>
-                  <div className={styles.setupItemHeader}>
-                    <span className={styles.setupItemIcon}>
-                      <Clock size={20} />
-                    </span>
-                    <h3 className={styles.setupItemTitle}>Operating Hours</h3>
-                  </div>
-                  <p className={styles.setupItemDesc}>
-                    Security risks shift dynamically across operating cycles, requiring flexible coverage rather than treating every hour identically. Secure Guard structures deployments around a site's specific operational schedule, scaling guard presence, monitoring intensity, and access controls to match high-traffic operating windows and vacant after-hours periods.
-                  </p>
+              <div className={styles.setupGridItem} style={{ background: "var(--color-bg-section)" }}>
+                <div className={styles.setupItemHeader}>
+                  <span className={styles.setupItemIcon}>02</span>
+                  <h3 className={styles.setupItemTitle}>Inspect the Physical Environment</h3>
                 </div>
+                <p className={styles.setupItemDesc}>
+                  Evaluates your physical boundaries, entrances, perimeters, parking zones, loading bays, and storage areas to pinpoint physical blind spots, lighting gaps, and access vulnerabilities across the property.
+                </p>
+              </div>
 
-                <div className={`${styles.setupGridItem} ${styles.setupItem3}`}>
-                  <div className={styles.setupItemHeader}>
-                    <span className={styles.setupItemIcon}>
-                      <Activity size={20} />
-                    </span>
-                    <h3 className={styles.setupItemTitle}>Activity Patterns</h3>
-                  </div>
-                  <p className={styles.setupItemDesc}>
-                    Vulnerabilities fluctuate alongside routine site operations such as shift changes, vendor deliveries, tenant traffic, loading dock activity, and closing procedures. Secure Guard analyzes these recurring operational rhythms to strategically position on-site personnel, mobile patrols, and surveillance technology where activity and potential risks peak throughout the day.
-                  </p>
+              <div className={styles.setupGridItem} style={{ background: "var(--color-bg-section)" }}>
+                <div className={styles.setupItemHeader}>
+                  <span className={styles.setupItemIcon}>03</span>
+                  <h3 className={styles.setupItemTitle}>Audit Existing Security Resources</h3>
                 </div>
+                <p className={styles.setupItemDesc}>
+                  Analyze how your current setup, including on-site guards, patrol schedules, camera coverage, access protocols, and reporting workflows, is actively performing relative to your actual daily risks.
+                </p>
+              </div>
 
-                <div className={`${styles.setupGridItem} ${styles.setupItem4}`}>
-                  <div className={styles.setupItemHeader}>
-                    <span className={styles.setupItemIcon}>
-                      <ShieldCheck size={20} />
-                    </span>
-                    <h3 className={styles.setupItemTitle}>Response Requirements</h3>
-                  </div>
-                  <p className={styles.setupItemDesc}>
-                    Specific operational goals dictate whether a property requires passive deterrence, rapid field deployment, or active remote intervention. Secure Guard aligns response protocols directly with site needs, combining standing security officers, mobile patrols, and live video monitoring to deliver precise, actionable intervention when incidents occur.
-                  </p>
+              <div className={styles.setupGridItem} style={{ background: "var(--color-bg-section)" }}>
+                <div className={styles.setupItemHeader}>
+                  <span className={styles.setupItemIcon}>04</span>
+                  <h3 className={styles.setupItemTitle}>Pinpoint & Prioritize Vulnerabilities</h3>
                 </div>
+                <p className={styles.setupItemDesc}>
+                  Categorize and rank identified security gaps based on location, likelihood, and operational impact, allowing you to address critical threats first rather than treating every observation as equally urgent.
+                </p>
+              </div>
+
+              <div className={styles.setupGridItem} style={{ background: "var(--color-bg-section)" }}>
+                <div className={styles.setupItemHeader}>
+                  <span className={styles.setupItemIcon}>05</span>
+                  <h3 className={styles.setupItemTitle}>Deliver Actionable Improvements</h3>
+                </div>
+                <p className={styles.setupItemDesc}>
+                  Provide practical, targeted recommendations, ranging from minor patrol route tweaks and procedural updates to camera repositioning or hybrid technology integration, designed to strengthen your security program.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ===== SECTION 3: CAROUSEL (Secure Guard Services) ===== */}
-      <section className={`${styles.section} ${styles.carouselSectionWithBg}`} id="services">
-        <div className="container">
-          <div className={styles.sectionHeaderCentered} style={{ marginBottom: "40px" }}>
-            <span className={styles.sectionTag}>Our Offerings</span>
-            <h2 className={styles.sectionTitle}>
-              Secure Guard Services
-            </h2>
-          </div>
-          <CarouselSection 
-            autoplay={true}
-            items={[
-              {
-                title: "Security Officers",
-                tag: "PHYSICAL PRESENCE",
-                description: (
-                  <p>
-                    Provide a strong physical presence on your property to deter threats before they happen. Depending on your site’s specific needs, officers manage access points, conduct foot patrols, monitor daily activity, assist during emergencies, and document all on-site incidents in real time.
-                  </p>
-                ),
-                image: "https://cms.secureguardservices.com/wp-content/uploads/2026/08/diffguards.webp"
-              },
-              {
-                title: "Mobile Patrol",
-                tag: "RAPID RESPONSE",
-                description: (
-                  <p>
-                    Extends physical protection across larger properties or locations that don't require a full-time standing guard. Patrol personnel perform scheduled or randomized vehicle sweeps, check secured access points, investigate suspicious activity, and provide rapid, visible field response.
-                  </p>
-                ),
-                image: "https://cms.secureguardservices.com/wp-content/uploads/2019/05/vehicle-security-2.png"
-              },
-              {
-                title: "Video Monitoring",
-                tag: "CONTINUOUS OVERSIGHT",
-                description: (
-                  <p>
-                    This gives you continuous, real-time visibility across designated areas of your property. Instead of relying on recorded footage after damage or theft has already occurred, suspicious activity is actively monitored and evaluated while it is happening.
-                  </p>
-                ),
-                image: "https://cms.secureguardservices.com/wp-content/uploads/2026/08/em10-2-1.webp"
-              },
-              {
-                title: "Mobile Surveillance Towers",
-                tag: "OFF-GRID SECURITY",
-                description: (
-                  <p>
-                    Engineered for large, open, temporary, or off-grid sites, mobile surveillance towers deliver elevated camera coverage, thermal night vision, live voice-down audio intervention, and remote monitoring without requiring on-site wiring or infrastructure.
-                  </p>
-                ),
-                image: "https://cms.secureguardservices.com/wp-content/uploads/2026/08/BG-1-scaled.webp"
-              },
-              {
-                title: "Central Dispatch",
-                tag: "OPERATIONAL BRIDGE",
-                description: (
-                  <p>
-                    This serves as the active operational bridge between live monitoring networks and field personnel. Whenever a situation requires immediate backup, dispatch coordinates seamlessly with on-site guards, mobile patrol units, field supervisors, property contacts, and local authorities.
-                  </p>
-                ),
-                image: "https://cms.secureguardservices.com/wp-content/uploads/2026/08/dispatch.png"
-              }
-            ]} 
-          />
-        </div>
-      </section>
-
-      {/* ===== SECTION 4: PROCESS EXPLORER (How Secure Guard Builds Your Security Plan) ===== */}
-      <section className={styles.section} id="build-plan">
-        <div className="container">
-          <div className={styles.sectionHeaderCentered} style={{ marginBottom: "56px" }}>
-            <span className={styles.sectionTag}>The Process</span>
-            <h2 className={styles.sectionTitle}>
-              How Secure Guard Builds Your Security Plan
-            </h2>
-          </div>
-          
-          <ProcessExplorer />
-        </div>
-      </section>
-
-      {/* ===== SECTION 5: SECURETRACK & COMBINATION OF SERVICES ===== */}
-      <section className={`${styles.section} ${styles.sectionDark}`} id="securetrack-ecosystem">
-        <div className="container">
-          <div className={styles.splitGrid} style={{ alignItems: "center" }}>
-            <div className={styles.splitImageWrapper} style={{ height: "100%", minHeight: "400px" }}>
-              <Image 
-                src="https://cms.secureguardservices.com/wp-content/uploads/2026/08/cliepor.png" 
-                alt="SecureTrack Ecosystem" 
-                fill
-                className={styles.splitImage}
-              />
-            </div>
-            <div className={styles.splitContent}>
-              <h2 className={`${styles.sectionTitle} ${styles.sectionTitleDark}`}>
-                SecureTrack
+      {/* ===== SECTION 8: Vulnerability Assessment to Security Strategy (Escalation box) ===== */}
+      <section className={styles.contactSection} id="strategy">
+        <div className={`container ${styles.contactContainer}`}>
+          <div className={styles.contactContentPanel}>
+            <div className={styles.sectionHeader} style={{ margin: "0 0 24px 0", textAlign: "left" }}>
+              <span className={styles.sectionTag} style={{ color: "#b89000", background: "rgba(254, 207, 49, 0.13)", borderColor: "rgba(254, 207, 49, 0.35)" }}>Actionable Intelligence</span>
+              <h2 className={styles.sectionTitle} style={{ marginBottom: "16px", color: "var(--color-white)" }}>
+                Vulnerability Assessment to Security Strategy
               </h2>
-              <p className={`${styles.bodyText} ${styles.bodyTextDark}`}>
-                Secure Guard’s all-in-one management platform that links on-site guards, supervisors, 24/7 dispatchers, camera technology, and digital reporting into a single connected system. Whether verifying patrol rounds on a construction site, tracking entry logs at a warehouse, or recording incident reports in a residential community, SecureTrack gives you total visibility into your security operations. Rather than replacing trained personnel, this technology empowers our officers, dispatchers, and field supervisors to work together seamlessly while giving you clear, real-time proof of protection.
-              </p>
             </div>
+            <p className={styles.bodyText} style={{ color: "rgba(255, 255, 255, 0.9)", marginBottom: 0 }}>
+              A vulnerability audit provides the concrete baseline needed to build a tailored security strategy rather than forcing a standardized package onto your property. Based on your site's specific findings, we deploy the exact mix of protection required, whether that means standing officers for continuous visible deterrence, mobile patrols for flexible after-hours checks, or solar surveillance towers and remote video monitoring for expansive outdoor perimeters.
+            </p>
           </div>
         </div>
       </section>
 
-      <section className={styles.section} id="combination">
+      {/* ===== SECTION 9: The Secure Guard Difference ===== */}
+      <section className={styles.standardSection} id="difference">
+        <div className={styles.standardPatternLeft}>
+          <FloatingShapes shapeCount={18} />
+        </div>
+        <div className={styles.standardPatternRight}>
+          <FloatingShapes shapeCount={18} />
+        </div>
         <div className="container">
-          <div className={styles.splitGrid} style={{ alignItems: "center" }}>
-            <div className={styles.splitContent}>
-              <h2 className={styles.sectionTitle}>
-                Combination of Services
-              </h2>
-              <p className={styles.bodyText}>
-                Combining security services turns individual protective measures into a unified, multi-layered defense network tailored to your property's exact layout and risk profile. Because different zones of a property carry distinct vulnerabilities across operating hours, blending physical coverage, remote technology, and centralized coordination ensures that every operational gap is covered without paying for unnecessary redundancy. 
-              </p>
-              <p className={styles.bodyText} style={{ marginTop: "16px" }}>
-                Guided by your site vulnerability audit, you retain total control over the exact mix of services you deploy, knowing that every layer connects seamlessly to share real-time data, coordinate rapid response, and deliver complete operational transparency across your entire site.
-              </p>
-            </div>
-            <div className={`${styles.splitImageWrapper} ${styles.orderFirstMobile}`} style={{ height: "100%", minHeight: "400px" }}>
-              <Image 
-                src="https://cms.secureguardservices.com/wp-content/uploads/2026/08/whysecgu.webp" 
-                alt="Unified Management Ecosystem" 
-                fill
-                className={styles.splitImage}
-              />
-            </div>
+          <div className={styles.standardHeader} style={{ marginBottom: 0, maxWidth: "100%" }}>
+            <span className={styles.sectionTag}>Integrated Approach</span>
+            <h2 className={styles.sectionTitle}>The Secure Guard Difference</h2>
+            <p className={styles.standardSubtitle} style={{ maxWidth: "100%", textAlign: "center" }}>
+              Secure Guard treats property security as an integrated operational system rather than a collection of standalone services. By evaluating your physical layout, traffic flow, operating schedules, and existing security measures together, we deliver practical recommendations based on how your property actually functions.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* ===== SECTION 6: INDUSTRIES ===== */}
-      <IndustriesSection />
-
-      {/* ===== SECTION 7: COVERAGE ===== */}
+      {/* ===== COVERAGE SECTION ===== */}
       <CoverageSection />
 
-      {/* ===== SECTION 8: FAQ ACCORDION ===== */}
-      <section className={`${styles.section} ${styles.faqSection}`} id="faq">
+      {/* ===== SECTION 10: FAQ ===== */}
+      <section className={styles.faqSection} id="faq">
         <div className="container">
-          <div className={styles.sectionHeaderCentered} style={{ marginBottom: "56px" }}>
-            <span className={styles.sectionTag}>Questions & Answers</span>
+          <div className={styles.sectionHeader}>
+            <span className={styles.sectionTag}>FAQ</span>
             <h2 className={styles.sectionTitle}>
-              Frequently Asked Questions (FAQ)
+              Frequently Asked Questions
             </h2>
           </div>
-          <FAQAccordion items={faqs} />
+          <FAQAccordion />
         </div>
       </section>
 
       {/* ===== PRE-FOOTER CTA ===== */}
       <PreFooterCTA />
 
-      {/* ===== FOOTER ===== */}
       <Footer />
-
-      {/* ===== LEAD GENERATION MODAL ===== */}
-      <LeadGenModal
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-        title={modalTitle}
-      />
-
-      {/* ===== BACK TO TOP ===== */}
       <BackToTop />
     </main>
   );
