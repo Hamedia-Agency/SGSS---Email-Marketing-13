@@ -49,7 +49,7 @@ export default function EvaluationCarousel() {
     <div className={styles.carouselContainer}>
       <button 
         onClick={scrollPrev} 
-        className={${"$"}{styles.navButton} {styles.navLeft}}
+        className={`${styles.navButton} ${styles.navLeft}`}
         aria-label="Previous"
       >
         <ChevronLeft size={24} />
@@ -75,7 +75,7 @@ export default function EvaluationCarousel() {
 
       <button 
         onClick={scrollNext} 
-        className={${"$"}{styles.navButton} {styles.navRight}}
+        className={`${styles.navButton} ${styles.navRight}`}
         aria-label="Next"
       >
         <ChevronRight size={24} />
